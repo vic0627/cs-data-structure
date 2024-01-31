@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pure90719/code/cs-data-structure/cs-data-structure.csproj": {}
+    "C:\\Users\\Sunrise\\sunrise\\cs-data-structure\\cs-data-structure.csproj": {}
   },
   "projects": {
-    "/Users/pure90719/code/cs-data-structure/cs-data-structure.csproj": {
+    "C:\\Users\\Sunrise\\sunrise\\cs-data-structure\\cs-data-structure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pure90719/code/cs-data-structure/cs-data-structure.csproj",
+        "projectUniqueName": "C:\\Users\\Sunrise\\sunrise\\cs-data-structure\\cs-data-structure.csproj",
         "projectName": "cs-data-structure",
-        "projectPath": "/Users/pure90719/code/cs-data-structure/cs-data-structure.csproj",
-        "packagesPath": "/Users/pure90719/.nuget/packages/",
-        "outputPath": "/Users/pure90719/code/cs-data-structure/obj/",
+        "projectPath": "C:\\Users\\Sunrise\\sunrise\\cs-data-structure\\cs-data-structure.csproj",
+        "packagesPath": "C:\\Users\\Sunrise\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sunrise\\sunrise\\cs-data-structure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/pure90719/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Sunrise\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
