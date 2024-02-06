@@ -3,8 +3,9 @@ using static System.Console;
 class MatrixClient
 {
     public static void Execute() { 
-        AddDemo();
-        MultiplyDemo();
+        // AddDemo();
+        // MultiplyDemo();
+        TransposeDemo();
     }
 
     
@@ -79,5 +80,28 @@ class MatrixClient
             }
 
         return [X, Y];
+    }
+
+    private static void TransposeDemo()
+    {
+        int M, N;
+        int[,]? mtx = null;
+        
+        var rowAndCol = CreateMatrix(ref mtx, 'M', 'N');
+
+        if (mtx == null) {
+            WriteLine("矩陣未正確初始化");
+            return;
+        }
+
+        M = rowAndCol[0];
+        N = rowAndCol[1];
+
+        WriteLine("輸入矩陣內容為...");
+        Matrix.PirntMatrix(mtx, M, N);
+
+        int[,] _mtx = Matrix.Transpose(mtx);
+        WriteLine("轉置矩陣內容為...");
+        Matrix.PirntMatrix(_mtx, N, M);
     }
 }

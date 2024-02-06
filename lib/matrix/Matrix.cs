@@ -1,5 +1,7 @@
 using static System.Console;
 
+delegate void Hooks<T>(params T[] value);
+
 class Matrix
 {
     /// <summary>
@@ -65,6 +67,11 @@ class Matrix
             }
     }
 
+    /// <summary>
+    /// 轉置矩陣
+    /// </summary>
+    /// <param name="arr">輸入矩陣</param>
+    /// <returns>基於輸入矩陣的轉置矩陣</returns>
     public static int[,] Transpose(int[,] arr)
     {
         int X = arr.GetLength(0);
@@ -79,6 +86,12 @@ class Matrix
         return output;
     }
 
+    public static int[,] CreateRandomSparse(int dimX = 10, int dimY = 10)
+    {
+        Random random = new();
+        int[,] sparse = new int[dimX, dimY];
+    }
+
     /// <summary>
     /// 列印矩陣
     /// </summary>
@@ -90,6 +103,8 @@ class Matrix
         if (arr == null)
             return;
 
+        TraverseMatrixOption option = new(arr);
+
         for (int row = 0; row < dimX; row++)
         {
             for (int col = 0; col < dimY; col++)
@@ -98,5 +113,59 @@ class Matrix
             }
             WriteLine();
         }
+    }
+
+    public static void TraverseMatrix(TraverseMatrixOption option)
+    {
+        for (int row = 0; row < option.DimX; row++)
+        {
+            option.onRowStart.Invoke(row);
+
+            for (int col = 0; col < option.DimY; col++)
+            {
+                var value = option.target[row, col];
+                option.onTarget.Invoke(value, row, col);
+            }
+
+            option.onRowEnd.Invoke(row);
+        }
+    }
+
+    public class TraverseMatrixOption(int[,] target)
+    {
+        public readonly int[,] target = target;
+
+        private int dimX = target.GetLength(0);
+        private int dimY = target.GetLength(1);
+        public int DimX
+        {
+            get => dimX;
+            set
+            {
+                if (value < 1)
+                {
+                    WriteLine("輸入值不可小於 1");
+                    return;
+                }
+                dimX = value;
+            }
+        }
+        public int DimY
+        {
+            get => dimY;
+            set
+            {
+                if (value < 1)
+                {
+                    WriteLine("輸入值不可小於 1");
+                    return;
+                }
+                dimY = value;
+            }
+        }
+
+        public Hooks<int> onRowStart = (int[] _) => { };
+        public Hooks<int> onRowEnd = (int[] _) => { };
+        public Hooks<int> onTarget = (int[] _) => { };
     }
 }
