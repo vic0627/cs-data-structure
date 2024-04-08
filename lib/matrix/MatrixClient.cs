@@ -2,14 +2,15 @@ using static System.Console;
 
 class MatrixClient
 {
-    public static void Execute() { 
+    public static void Execute()
+    {
         // AddDemo();
         // MultiplyDemo();
         // TransposeDemo();
-        SparseDemo();
+        // SparseDemo();
+        UpperTriangular();
     }
 
-    
     private static void AddDemo()
     {
         const int ROWS = 3;
@@ -40,8 +41,11 @@ class MatrixClient
 
     private static void MultiplyDemo()
     {
-        int[,]? A = null, B = null;
-        int M, N, P;
+        int[,]? A = null,
+            B = null;
+        int M,
+            N,
+            P;
         var a = CreateMatrix(ref A, 'M', 'N');
         var b = CreateMatrix(ref B, 'N', 'P');
         M = a[0];
@@ -53,7 +57,7 @@ class MatrixClient
         Matrix.PirntMatrix(C, M, P);
         ReadKey();
     }
-    
+
     private static int[] CreateMatrix(ref int[,]? matrix, char rolName, char colName)
     {
         int X,
@@ -80,17 +84,20 @@ class MatrixClient
                 matrix[i, j] = int.Parse(tempStr);
             }
 
-        return [X, Y];
+        int[] point = { X, Y };
+        return point;
     }
 
     private static void TransposeDemo()
     {
-        int M, N;
+        int M,
+            N;
         int[,]? mtx = null;
-        
+
         var rowAndCol = CreateMatrix(ref mtx, 'M', 'N');
 
-        if (mtx == null) {
+        if (mtx == null)
+        {
             WriteLine("矩陣未正確初始化");
             return;
         }
@@ -109,5 +116,60 @@ class MatrixClient
     private static void SparseDemo()
     {
         Matrix.Sparse();
+    }
+
+    private static void UpperTriangular()
+    {
+        const int ARRAY_SIZE = 5;
+        int[,] A = // 上三角矩陣
+        {
+            { 7, 8, 12, 21, 9 },
+            { 0, 5, 14, 17, 6 },
+            { 0, 0, 7, 23, 24 },
+            { 0, 0, 0, 32, 19 },
+            { 0, 0, 0, 0, 8 }
+        };
+        int[] B = new int[ARRAY_SIZE * (1 + ARRAY_SIZE) / 2];
+
+        int GetValue(int i, int j)
+        {
+            int index = ARRAY_SIZE * i - i * (i + 1) / 2 + j;
+            return B[index];
+        }
+
+        int i = 0,
+            j = 0;
+        int index;
+
+        WriteLine("============================================");
+        WriteLine("上三角形矩陣：");
+
+        for (i = 0; i < ARRAY_SIZE; i++)
+        {
+            for (j = 0; j < ARRAY_SIZE; j++)
+                Write("\t" + A[i, j]);
+            WriteLine();
+        }
+        // 將右上三角矩陣壓縮為一維陣列
+        index = 0;
+        for (i = 0; i < ARRAY_SIZE; i++)
+        {
+            for (j = 0; j < ARRAY_SIZE; j++)
+            {
+                if (A[i, j] != 0)
+                    B[index++] = A[i, j];
+            }
+        }
+
+        WriteLine("============================================");
+        WriteLine("以一維的方式表示：");
+        Write("\t[");
+        for (i = 0; i < ARRAY_SIZE; i++)
+        {
+            for (j = i; j < ARRAY_SIZE; j++)
+                Write(" " + GetValue(i, j));
+        }
+        Write(" ]");
+        WriteLine();
     }
 }
