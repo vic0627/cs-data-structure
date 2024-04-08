@@ -5,7 +5,8 @@ class MatrixClient
     public static void Execute() { 
         // AddDemo();
         // MultiplyDemo();
-        TransposeDemo();
+        // TransposeDemo();
+        SparseDemo();
     }
 
     
@@ -103,5 +104,10 @@ class MatrixClient
         int[,] _mtx = Matrix.Transpose(mtx);
         WriteLine("轉置矩陣內容為...");
         Matrix.PirntMatrix(_mtx, N, M);
+    }
+
+    private static void SparseDemo()
+    {
+        Matrix.Sparse();
     }
 }

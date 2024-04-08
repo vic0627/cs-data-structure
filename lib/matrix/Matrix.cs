@@ -86,10 +86,64 @@ class Matrix
         return output;
     }
 
-    public static int[,] CreateRandomSparse(int dimX = 10, int dimY = 10)
+    /// <summary>
+    /// 利用三項式（3-tuple）資料結構，壓縮 8 * 8 稀疏矩陣
+    /// </summary>
+    public static void Sparse()
     {
-        Random random = new();
-        int[,] sparse = new int[dimX, dimY];
+        const int _ROWS = 8; // 定義列數
+        const int _COLS = 9; // 定義行數
+        const int _NOTZERO = 8; // 定義稀疏矩陣中不為 0 的個數
+        int i,
+            j,
+            tmpRW,
+            tmpCL,
+            tmpNZ;
+        int temp = 1;
+        int[,] Sparse = new int[_ROWS, _COLS]; // 宣告稀疏矩陣
+        int[,] Compress = new int[_NOTZERO + 1, 3]; // 宣告壓縮矩陣
+        Random intRand = new(); // 宣告 Random 物件
+        for (i = 0; i < _ROWS; i++) // 將稀疏矩陣中所有元素設為 0
+            for (j = 0; j < _COLS; j++)
+                Sparse[i, j] = 0;
+        tmpNZ = _NOTZERO;
+        for (i = 1; i < tmpNZ + 1; i++)
+        {
+            tmpRW = intRand.Next(100);
+            tmpRW %= _ROWS;
+            tmpCL = intRand.Next(100);
+            tmpCL %= _COLS;
+            if (Sparse[tmpRW, tmpCL] != 0) // 避免同一個元素設定兩次數值而造成壓縮矩陣
+                tmpNZ++;
+            Sparse[tmpRW, tmpCL] = i;
+        }
+        WriteLine("[稀疏矩陣的各個元素]"); // 印出稀疏矩陣的各個元素
+        for (i = 0; i < _ROWS; i++)
+        {
+            for (j = 0; j < _COLS; j++)
+                Write(Sparse[i, j] + " ");
+            WriteLine();
+        }
+        // 開始壓縮稀疏矩陣
+        Compress[0, 0] = _ROWS;
+        Compress[0, 1] = _COLS;
+        Compress[0, 2] = _NOTZERO;
+        for (i = 0; i < _ROWS; i++)
+            for (j = 0; j < _COLS; j++)
+                if (Sparse[i, j] != 0)
+                {
+                    Compress[temp, 0] = i;
+                    Compress[temp, 1] = j;
+                    Compress[temp, 2] = Sparse[i, j];
+                    temp++;
+                }
+        WriteLine("[稀疏矩陣壓縮後的內容]"); // 印出壓縮矩陣的各個元素
+        for (i = 0; i < _NOTZERO; i++)
+        {
+            for (j = 0; j < 3; j++)
+                Write(Compress[i, j] + " ");
+            WriteLine();
+        }
     }
 
     /// <summary>
