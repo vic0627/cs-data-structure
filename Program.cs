@@ -5,4 +5,6 @@
 // TwoDim.Execute();
 // ThreeDim.Execute();
 // MatrixClient.Execute();
-Poly.Program.Main();
+// Poly.Program.Main();
+// Single.Program.Main();
+Score.Program.Main();
