@@ -1,5 +1,3 @@
-using static System.Console;
-
 class Iterative
 {
     public static void Execute()

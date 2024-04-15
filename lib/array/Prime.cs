@@ -1,5 +1,3 @@
-using static System.Console;
-
 /// <summary>
 /// 利用一維陣列尋找與儲存範圍 1 ~ MAX 內所有質數
 /// 質數（prime number）是指不能被 1 和本身以外的數值所整除的整數

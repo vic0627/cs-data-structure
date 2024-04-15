@@ -1,7 +1,5 @@
-using static System.Console;
-
 /// <summary>
-/// 利用三層巢狀迴圈找出 2 x 3 x 3 陣列中所储存的數值中的最小值。 
+/// 利用三層巢狀迴圈找出 2 x 3 x 3 陣列中所储存的數值中的最小值。
 /// </summary>
 class ThreeDim
 {

@@ -5,11 +5,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>cs_data_structure</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Include Using="System.Console" Static="true" />
+    <Using Include="System.Console" Static="true" />
   </ItemGroup>
 
 </Project>

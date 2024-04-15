@@ -1,5 +1,3 @@
-using static System.Console;
-
 delegate void Hooks<T>(params T[] value);
 
 class Matrix
@@ -39,7 +37,7 @@ class Matrix
     /// <param name="M">arrA 行數</param>
     /// <param name="N">arrA 列數</param>
     /// <param name="P">arrB 列數</param>
-    public static void Multiply(int[,]? arrA, int[,]? arrB, int[,] arrC, int M, int N, int P)
+    public static void Multiply(int[,] arrA, int[,] arrB, int[,] arrC, int M, int N, int P)
     {
         int i,
             j,
@@ -152,7 +150,7 @@ class Matrix
     /// <param name="arr">目標矩陣</param>
     /// <param name="dimX">行數</param>
     /// <param name="dimY">列數</param>
-    public static void PirntMatrix(int[,]? arr, int dimX = 3, int dimY = 3)
+    public static void PirntMatrix(int[,] arr, int dimX = 3, int dimY = 3)
     {
         if (arr == null)
             return;

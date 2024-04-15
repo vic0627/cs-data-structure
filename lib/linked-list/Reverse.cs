@@ -1,21 +1,14 @@
-namespace Score;
+namespace Reverse;
 
-internal class Node(int data, string names, int np)
+class Node(int data, string names, int np)
 {
     public int data = data;
-    public string names = names;
     public int np = np;
+    public string names = names;
     public Node next;
-
-    internal void Deconstruct(out int data, out string names, out int np)
-    {
-        data = this.data;
-        names = this.names;
-        np = this.np;
-    }
 }
 
-internal class StuLinkedList
+class StuLinkedList
 {
     public Node first;
     public Node last;
@@ -25,32 +18,15 @@ internal class StuLinkedList
         return first == null;
     }
 
-    public Node GetNodeByData(int data)
-    {
-        if (IsEmpty())
-            return null;
-
-        Node current = first;
-
-        while (current != null)
-        {
-            if (current.data == data)
-                return current;
-            current = current.next;
-        }
-
-        return null;
-    }
-
     public void Print()
     {
         Node current = first;
         while (current != null)
         {
-            var (data, names, np) = current;
-            WriteLine($"[ {data} {names} {np} ]");
+            WriteLine($"[{current.data} {current.names} {current.np}]");
             current = current.next;
         }
+        WriteLine();
     }
 
     public void Insert(int data, string names, int np)
@@ -61,22 +37,21 @@ internal class StuLinkedList
             first = newNode;
             last = newNode;
         }
-        else if (last != null)
+        else
         {
             last.next = newNode;
             last = newNode;
         }
-        else
-            throw new NotImplementedException();
     }
 
     public void Delete(Node delNode)
     {
         Node newNode;
         Node tmp;
-
         if (first.data == delNode.data)
+        {
             first = first.next;
+        }
         else if (last.data == delNode.data)
         {
             newNode = first;
@@ -94,9 +69,32 @@ internal class StuLinkedList
                 tmp = newNode;
                 newNode = newNode.next;
             }
-            if (tmp != null)
-                tmp.next = delNode.next;
+            tmp.next = delNode.next;
         }
+    }
+}
+
+class ReverseStuLinkedList : StuLinkedList
+{
+    public void ReversePrint()
+    {
+        Node current = first;
+        Node before = null;
+        WriteLine("反轉後的串列資料：");
+        while (current != null)
+        {
+            last = before;
+            before = current;
+            current = current.next;
+            before.next = last;
+        }
+        current = before;
+        while (current != null)
+        {
+            WriteLine($"[{current.data} {current.names} {current.np}]");
+            current = current.next;
+        }
+        WriteLine();
     }
 }
 
@@ -105,11 +103,12 @@ class Program
     public static void Execute()
     {
         Random rand = new();
-        StuLinkedList list = new();
+        ReverseStuLinkedList list = new();
         int i,
-            j,
-            findword;
-        int[,] data = new int[12, 10];
+            j;
+        const int ROW = 12;
+        const int COL = 10;
+        int[,] data = new int[ROW, COL];
         string[] name =
         {
             "Allen",
@@ -119,22 +118,19 @@ class Program
             "Mark",
             "Ricky",
             "Lisa",
-            "Jessica",
+            "Jasica",
             "Hanson",
             "Amy",
             "Bob",
             "Jack"
         };
-
-        WriteLine("座號成績座號成績座號成績座號成績\n");
-
-        for (i = 0; i < 12; i++)
+        WriteLine("座號成績座號成績座號成績座號成績座號成績\n");
+        for (i = 0; i < ROW; i++)
         {
             data[i, 0] = i + 1;
             data[i, 1] = Math.Abs(rand.Next(50)) + 50;
             list.Insert(data[i, 0], name[i], data[i, 1]);
         }
-
         for (i = 0; i < 3; i++)
         {
             for (j = 0; j < 4; j++)
@@ -144,28 +140,6 @@ class Program
             }
             WriteLine();
         }
-
-        while (true)
-        {
-            Write("請輸入要刪除成績的座號，結束請輸入 -1： ");
-            findword = int.Parse(ReadLine() ?? "");
-            if (findword == -1)
-                break;
-            else
-            {
-                Node current = list?.GetNodeByData(findword);
-                if (current != null)
-                    list?.Delete(current);
-                else
-                {
-                    WriteLine("找不到刪除對象！");
-                    continue;
-                }
-            }
-
-            WriteLine("刪除後成績串列，請注意！要刪除的成績其座號必須在此串列中\n");
-
-            list?.Print();
-        }
+        list.ReversePrint();
     }
 }

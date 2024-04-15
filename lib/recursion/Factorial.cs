@@ -1,5 +1,3 @@
-using static System.Console;
-
 static class Factorial
 {
     public static void Execute()

@@ -1,5 +1,3 @@
-using static System.Console;
-
 delegate int IntDelegate(int n);
 
 class Fibonacci
@@ -8,8 +6,8 @@ class Fibonacci
     {
         int num;
         string str;
-        string? strategyName = null;
-        IntDelegate? intDelegate = null;
+        string strategyName = null;
+        IntDelegate intDelegate = null;
 
         WriteLine("請選擇一般遞迴或動態規劃法計算費式級數");
         Write("請輸入算法（0: 一般遞迴、1: 動態規劃法）：");

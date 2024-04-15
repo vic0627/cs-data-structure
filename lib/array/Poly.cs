@@ -1,12 +1,10 @@
-using static System.Console;
-
 namespace Poly;
 
 class Program
 {
     static readonly int ITEMS = 6;
 
-    public static void Main()
+    public static void Execute()
     {
         int[] PolyA = { 4, 3, 7, 0, 6, 2 }; // 宣告多項式 A
         int[] PolyB = { 4, 1, 5, 2, 0, 9 }; // 宣告多項式 B

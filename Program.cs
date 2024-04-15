@@ -7,4 +7,7 @@
 // MatrixClient.Execute();
 // Poly.Program.Main();
 // Single.Program.Main();
-Score.Program.Main();
+// Score.Program.Main();
+// Insert.Client.Execute();
+// Reverse.Program.Execute();
+Concatenation.Program.Execute();

@@ -1,5 +1,3 @@
-using static System.Console;
-
 class MatrixClient
 {
     public static void Execute()
@@ -42,7 +40,7 @@ class MatrixClient
 
     private static void MultiplyDemo()
     {
-        int[,]? A = null,
+        int[,] A = null,
             B = null;
         int M,
             N,
@@ -59,7 +57,7 @@ class MatrixClient
         ReadKey();
     }
 
-    private static int[] CreateMatrix(ref int[,]? matrix, char rolName, char colName)
+    private static int[] CreateMatrix(ref int[,] matrix, char rolName, char colName)
     {
         int X,
             Y,
@@ -93,7 +91,7 @@ class MatrixClient
     {
         int M,
             N;
-        int[,]? mtx = null;
+        int[,] mtx = null;
 
         var rowAndCol = CreateMatrix(ref mtx, 'M', 'N');
 

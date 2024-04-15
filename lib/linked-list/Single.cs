@@ -1,5 +1,3 @@
-using static System.Console;
-
 namespace Single;
 
 internal class Node(int data, string names, int np)
@@ -7,13 +5,13 @@ internal class Node(int data, string names, int np)
     public int data = data;
     public string names = names;
     public int np = np;
-    public Node? next;
+    public Node next;
 }
 
 internal class LinkedList
 {
-    private Node? first;
-    private Node? last;
+    private Node first;
+    private Node last;
 
     /// <summary>
     /// 判斷目前串列是否為空
@@ -29,7 +27,7 @@ internal class LinkedList
     /// </summary>
     public void Print()
     {
-        Node? current = first;
+        Node current = first;
         while (current != null)
         {
             WriteLine($"[{current.data} {current.names} {current.np}]");
@@ -65,7 +63,7 @@ internal class LinkedList
 
 class Program
 {
-    public static void Main()
+    public static void Execute()
     {
         int num;
         string name;
