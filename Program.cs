@@ -10,4 +10,5 @@
 // Score.Program.Main();
 // Insert.Client.Execute();
 // Reverse.Program.Execute();
-Concatenation.Program.Execute();
+// Concatenation.Program.Execute();
+Circular.Program.Execute();
