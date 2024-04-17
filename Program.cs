@@ -11,4 +11,7 @@
 // Insert.Client.Execute();
 // Reverse.Program.Execute();
 // Concatenation.Program.Execute();
-Circular.Program.Execute();
+// Circular.Program.Execute();
+// StackArray.Program.Execute();
+// Shuffle.Program.Execute();
+StackList.Program.Execute();
