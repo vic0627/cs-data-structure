@@ -14,4 +14,5 @@
 // Circular.Program.Execute();
 // StackArray.Program.Execute();
 // Shuffle.Program.Execute();
-StackList.Program.Execute();
+// StackList.Program.Execute();
+Tower.Program.Execute();
