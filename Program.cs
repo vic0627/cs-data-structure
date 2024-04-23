@@ -15,4 +15,6 @@
 // StackArray.Program.Execute();
 // Shuffle.Program.Execute();
 // StackList.Program.Execute();
-Tower.Program.Execute();
+// Tower.Program.Execute();
+// Maze.Program.Execute();
+Eight.Program.Execute();
