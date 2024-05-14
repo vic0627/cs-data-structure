@@ -18,4 +18,7 @@
 // Tower.Program.Execute();
 // Maze.Program.Execute();
 // Eight.Program.Execute();
-In2Post.Program.Execute();
+// In2Post.Program.Execute();
+// QueueArray.Program.Execute();
+// QueueList.Program.Execute();
+CircularQueue.Program.Execute();
