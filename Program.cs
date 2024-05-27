@@ -21,4 +21,5 @@
 // In2Post.Program.Execute();
 // QueueArray.Program.Execute();
 // QueueList.Program.Execute();
-CircularQueue.Program.Execute();
+// CircularQueue.Program.Execute();
+Deques.Program.Execute();
